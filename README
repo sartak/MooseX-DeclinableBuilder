@@ -1,0 +1,37 @@
+NAME
+    MooseX::DeclinableBuilder - let your builders decline to return a value
+
+SYNOPSIS
+        has attr => (
+            traits    => ['DeclinableBuilder'],
+            is        => 'ro',
+            builder   => '_build_attr',
+            predicate => 'has_attr',
+        );
+
+        sub _build_attr {
+            my ($self, $no_value) = @_;
+
+            return $no_value if rand() < .333;
+            return undef     if rand() < .5;
+            return "ok";
+        }
+
+DESCRIPTION
+    Sometimes, you just need your builders to elect to return no value. This
+    is distinct from returning "undef" or false, especially since predicate
+    treats a value of "undef" as having a value.
+
+    This is very similar to MooseX::UndefTolerant except this module only
+    modifies how builders work, and this module keeps "undef" as a distinct,
+    usable value.
+
+AUTHOR
+    Shawn M Moore "sartak@gmail.com"
+
+COPYRIGHT
+    Copyright 2011 Shawn M Moore.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
