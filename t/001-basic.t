@@ -34,9 +34,10 @@ is($t->result, 'ok', 'builder returned a real value');
 
 $t = DeclinableTest->new(desired_result => '');
 is($t->result, undef, 'result is undef');
-is($t->has_result, 1, 'builder successfully returned undef');
+ok($t->has_result, 'builder successfully returned undef');
 
 $t = DeclinableTest->new(desired_result => 'no value');
 is($t->result, undef, 'result is undef');
-is($t->has_result, 0, 'builder successfully declined to return a value');
+ok(!$t->has_result, 'builder successfully declined to return a value');
 
+done_testing;
