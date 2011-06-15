@@ -12,7 +12,7 @@ use Test::More;
     );
 
     has result => (
-#        traits    => ['DeclinableBuilder'],
+        traits    => ['DeclinableBuilder'],
         is        => 'ro',
         builder   => '_build_result',
         lazy      => 1,

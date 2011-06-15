@@ -6,6 +6,11 @@ use Moose::Exporter;
 our $VERSION = '0.01';
 
 
+Moose::Util::_create_alias(
+    'Attribute', 'DeclinableBuilder', 1,
+    'MooseX::DeclinableBuilder::Meta::Role::Attribute',
+);
+
 1;
 
 __END__
